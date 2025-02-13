@@ -39,3 +39,5 @@ graph.svg
 .DS_Store
 
 .git
+
+*.pem
