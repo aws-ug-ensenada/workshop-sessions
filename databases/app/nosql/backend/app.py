@@ -9,7 +9,7 @@ CORS(app)
 # Configure AWS DynamoDB
 session = boto3.Session(profile_name="personal")
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
-table = dynamodb.Table('dev-aws-ug-workshop-demo')
+table = dynamodb.Table('aws-ug-ensenada-demo')
 
 @app.route('/add_user', methods=['POST'])
 def add_user():

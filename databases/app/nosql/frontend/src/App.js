@@ -71,7 +71,7 @@ const App = () => {
             <input type="text" placeholder="Industry" value={career.industry} onChange={(e) => setCareer({ ...career, industry: e.target.value })} />
             <input type="number" placeholder="Years of Experience" value={career.experience_years} onChange={(e) => setCareer({ ...career, experience_years: e.target.value })} />
 
-            <h3>Skills (JSON format: {"[{skill: 'Python', level: 'Advanced'}]"})</h3>
+            <h3>Skills (JSON format: {"[{\"skill\": \"Python\", \"level\": \"Advanced\"}]"})</h3>
             <input type="text" placeholder='[{"skill": "Python", "level": "Advanced"}]' value={skills} onChange={(e) => setSkills(e.target.value)} />
 
             <h3>Hobbies (Comma-separated)</h3>
