@@ -7,9 +7,9 @@ CORS(app)
 
 # MySQL connection config
 conn = pymysql.connect(
-    host="dev-aws-ug-workshop-demo.canaphmx8rjr.us-east-1.rds.amazonaws.com",
-    user="awsadmin",
-    password="|w6UppSla4YFdTRwOJMM_qX*aoW2",
+    host="database-1.canaphmx8rjr.us-east-1.rds.amazonaws.com",
+    user="ensenadaadmin",
+    password="awsugensenada123",
     db="aws_ug_ensenada",
     cursorclass=pymysql.cursors.DictCursor
 )
