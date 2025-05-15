@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Items List</title>
-  <script>
-    async function fetchItems() {
-      const response = await fetch('/data');
-      const data = await response.json();
-      const list = document.getElementById("items");
-      list.innerHTML = '';
-      data.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item.name;
-        list.appendChild(li);
-      });
+  <title>Members of AWS User Group Ensenada</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 2em;
     }
-    window.onload = fetchItems;
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .header img {
+      width: 80px;
+      height: auto;
+    }
+    ul {
+      list-style-type: disc;
+      padding-left: 2em;
+      text-align: left;
+      max-width: 600px;
+      margin: 2em auto;
+    }
+  </style>
+  <script>
+    async function fetchUsers() {
+      try {
+        const response = await fetch('/data');
+        const data = await response.json();
+        const list = document.getElementById("users");
+        list.innerHTML = '';
+        data.forEach(user => {
+          const li = document.createElement("li");
+          li.textContent = user.full_name;
+          list.appendChild(li);
+        });
+      } catch (err) {
+        console.error("❌ Failed to load user list:", err);
+      }
+    }
+    window.onload = fetchUsers;
   </script>
 </head>
 <body>
-  <h1>Items from RDS</h1>
-  <ul id="items"></ul>
+
+  <div class="header">
+    <img src="/static/aws.png" alt="AWS Logo Left">
+    <h1>Members of AWS User Group Ensenada</h1>
+    <img src="/static/aws.png" alt="AWS Logo Right">
+  </div>
+
+  <ul id="users"></ul>
+
 </body>
 </html>
