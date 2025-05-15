@@ -20,11 +20,16 @@
     }
     ul {
       list-style-type: disc;
-      padding-left: 2em;
-      text-align: left;
-      max-width: 600px;
+      columns: 3; /* 💡 This is the key */
+      -webkit-columns: 3;
+      -moz-columns: 3;
+      column-gap: 40px;
+      padding: 0 2em;
+      max-width: 1000px;
       margin: 2em auto;
+      text-align: left;
     }
+
   </style>
   <script>
     async function fetchUsers() {
