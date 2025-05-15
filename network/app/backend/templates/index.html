@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Items List</title>
+  <script>
+    async function fetchItems() {
+      const response = await fetch('/data');
+      const data = await response.json();
+      const list = document.getElementById("items");
+      list.innerHTML = '';
+      data.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item.name;
+        list.appendChild(li);
+      });
+    }
+    window.onload = fetchItems;
+  </script>
+</head>
+<body>
+  <h1>Items from RDS</h1>
+  <ul id="items"></ul>
+</body>
+</html>
