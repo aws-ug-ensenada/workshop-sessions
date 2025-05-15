@@ -1,12 +1,16 @@
-from flask import Flask, jsonify
+from flask import Flask, render_template, jsonify
 from flask_cors import CORS
-from db import get_connection
+from db import get_connection  # same db.py as before
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/data", methods=["GET"])
-def get_data():
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/data")
+def data():
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM items;")
@@ -16,4 +20,4 @@ def get_data():
     return jsonify(rows)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
