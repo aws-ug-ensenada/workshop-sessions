@@ -8,14 +8,60 @@ def initialize_db():
         conn = get_connection()
         cursor = conn.cursor()
 
+        # Drop old table if it exists
+        cursor.execute("DROP TABLE IF EXISTS items;")
+
+        # Create new users table
         cursor.execute("""
-            CREATE TABLE IF NOT EXISTS items (
+            CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                name VARCHAR(255) NOT NULL
+                full_name VARCHAR(255) NOT NULL
             );
         """)
 
-        cursor.execute("INSERT INTO items (name) VALUES ('Apple'), ('Banana'), ('Cherry');")
+        # Insert AWS User Group Ensenada members
+        users = [
+            "Addy",
+            "Alejandro Renato Leon Lomeli",
+            "Alejandro Velazquez",
+            "alfredevvv",
+            "Alonso Parasxidis Moreno",
+            "Aylin Gallegos",
+            "Brayan Ivan",
+            "Daniel",
+            "Daniel Solano",
+            "David Eduardo Ferreira",
+            "David Jimenez Rodriguez",
+            "diego.quiros",
+            "diego198mayo",
+            "duranzavala",
+            "eliel.ontiveros",
+            "Emanuel solis",
+            "Fernando Haro",
+            "Fiorella",
+            "Gerardo Velez",
+            "Ivan Duarte Patiño",
+            "Jesus Miguel Armenta Garzon",
+            "Joel Ernesto Lopez Verdugo",
+            "Jorge V",
+            "José Luna",
+            "karen.garcia17",
+            "Lariza.Covarrubias",
+            "leonel120lgr",
+            "leonelriverasal",
+            "Igonzalez85",
+            "Manuel Rubio",
+            "Mariana Salazar",
+            "mario.valenzuela50",
+            "ozkarxbox",
+            "Pedro Walle",
+            "rivas.andrea",
+            "Salvador Reyes",
+            "Sergio Burguer",
+            "Teresa Rivas"
+        ]
+
+        cursor.executemany("INSERT INTO users (full_name) VALUES (%s)", [(name,) for name in users])
         conn.commit()
 
         cursor.close()
